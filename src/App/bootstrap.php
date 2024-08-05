@@ -5,7 +5,20 @@
 declare(strict_types=1);
 
 // Load the Application file from the Framework directory manually
-include __DIR__ . "/../Framework/App.php";
+//include __DIR__ . "/../Framework/App.php";
+
+/* using autoload, to autoload classes using composer, we do not need to include them manually
+    composer.json -> include the namespaces to autoload
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework",
+            "App\\": "src/App"
+        }
+    }
+    Then, generate the autoload using composer -> composer dump-autoload
+    Creates the vendor/autoload files
+*/
+require __DIR__ . "../../../vendor/autoload.php";
 
 // import the Framework App Class
 use Framework\App;
