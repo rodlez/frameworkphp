@@ -15,8 +15,11 @@ namespace Framework;
 
 class App
 {
+    // private -> we do NOT want the router be updated for external sources
+    // Name convention -> property with the same name as the class
     private Router $router;
 
+    // when the App is instantiated, we have now access to the class Router
     public function __construct()
     {
         $this->router = new Router();
@@ -27,8 +30,10 @@ class App
         echo "App is running...";
     }
 
-    public function add(string $path)
+    // Register a route with HTTP Methods
+
+    public function get(string $path)
     {
-        $this->router->add($path);
+        $this->router->add('GET', $path);
     }
 }
