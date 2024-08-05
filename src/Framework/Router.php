@@ -17,14 +17,16 @@ class Router
      * Public Method to add routes in the Router class
      * @param string $method GET, POST, DELETE
      * @param string $path route path
+     * @param array $controller array with the Controller class and the method
      */
 
-    public function add(string $method, string $path)
+    public function add(string $method, string $path, array $controller)
     {
         $path = $this->normalizePath($path);
         $this->routes[] = [
             'path' => $path,
-            'method' => strtoupper($method)
+            'method' => strtoupper($method),
+            'controller' => $controller
         ];
     }
 

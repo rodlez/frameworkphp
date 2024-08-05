@@ -26,11 +26,13 @@ use Framework\App;
 // instance of the App Class and return
 $app = new App();
 
-$app->get('/');
-// Test normalize register methods
+$app->get('/', ['App\Controllers\HomeController', 'home']);
+
+/* Test normalize register methods
 $app->get('about/team');
 $app->get('/about/team');
 $app->get('/about/team/');
+*/
 
 showNice($app);
 

@@ -30,10 +30,14 @@ class App
         echo "App is running...";
     }
 
-    // Register a route with HTTP Methods
+    /**
+     * Public Method to register a route using the add method in the Router class
+     * @param string $path route path
+     * @param array $controller array with the Controller class and the method
+     */
 
-    public function get(string $path)
+    public function get(string $path, array $controller)
     {
-        $this->router->add('GET', $path);
+        $this->router->add('GET', $path, $controller);
     }
 }
