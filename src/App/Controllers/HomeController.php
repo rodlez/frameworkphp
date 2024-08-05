@@ -25,7 +25,9 @@ class HomeController
 
     public function home()
     {
-        showNice($this->view);
-        echo 'HOME PAGE';
+        echo $this->view->render("index.php", [
+            // Template information
+            'title' => 'Home Page'
+        ]);
     }
 }
