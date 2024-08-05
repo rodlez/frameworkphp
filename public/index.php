@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// we get the instance of the App class with all the methods that we need to run the application
+$app = include __DIR__ . '/../src/App/bootstrap.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Framework</title>
-</head>
-
-<body>
-    <h1>HOLI</h1>
-</body>
-
-</html>
+// Call the run method to start the App
+$app->run();
