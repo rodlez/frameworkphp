@@ -15,11 +15,11 @@ use App\Config\Paths;
 
 class HomeController
 {
-    private TemplateEngine $view;
+    // to create an instance of the TemplateEngine to render the content
+    // moving the property TemplateEngine as a parameter of the construct method to look for dependencies    
 
-    public function __construct()
+    public function __construct(private TemplateEngine $view)
     {
-        $this->view = new TemplateEngine(Paths::VIEW);
     }
 
 

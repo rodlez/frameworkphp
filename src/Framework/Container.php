@@ -38,5 +38,15 @@ class Container
         if (!$reflectionClass->isInstantiable()) {
             throw new ContainerException("Class {$className} is not instantiable.");
         }
+
+        // 2 - The ReflectionClass has a method to retrieve the construct method of a class
+
+        $constructor = $reflectionClass->getConstructor();
+
+        if (!$constructor) {
+            return new $className;
+        }
+
+        showNice($constructor);
     }
 }
