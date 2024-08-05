@@ -38,6 +38,6 @@ $app->get('/about/team');
 $app->get('/about/team/');
 */
 
-showNice($app);
+//showNice($app);
 
 return $app;

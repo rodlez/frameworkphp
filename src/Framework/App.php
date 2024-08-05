@@ -27,7 +27,11 @@ class App
 
     public function run()
     {
-        echo "App is running...";
+        // Extract the path and method using the $_SERVER array that contains info about the server.
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        $this->router->dispatch($path, $method);
     }
 
     /**

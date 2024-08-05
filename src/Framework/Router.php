@@ -46,4 +46,18 @@ class Router
 
         return $path;
     }
+
+    /**
+     * Public Method to dispatching a route in the Router class - display the page content from an specific URL
+     * @param string $path route path
+     * @param string $method GET, POST, DELETE
+     */
+
+    public function dispatch(string $path, string $method)
+    {
+        $path = $this->normalizePath($path);
+        $method = strtoupper($method);
+
+        echo $path . $method;
+    }
 }
