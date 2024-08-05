@@ -7,6 +7,8 @@ namespace Framework;
 // to help inspect a Class
 use ReflectionClass;
 
+use Framework\Exceptions\ContainerException;
+
 class Container
 {
     // array with the definitions to create the instances of the classes
@@ -30,5 +32,11 @@ class Container
         // ReflectionClass creates an instance of the class that we pass
         $reflectionClass = new ReflectionClass($className);
         showNice($reflectionClass);
+
+        // 1 - Validate the class to know if the class can be instantiated, for example abstract classes can NOT
+
+        if (!$reflectionClass->isInstantiable()) {
+            throw new ContainerException("Class {$className} is not instantiable.");
+        }
     }
 }
