@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/fontawesome.css">
     <!-- Favicon -->
     <link rel="icon" href="/images/favicon.png" />
-    <title><?php echo $title; ?></title>
+    <title><?php echo escapeChar($title); ?></title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="/src/App/views/index.php">
+            <a class="navbar-brand" href="/">
                 <img src="/images/web/logo.svg" alt="" width="200" />
             </a>
             <!-- Hamburger Menu -->
@@ -37,10 +37,10 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item px-2">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link" href="#">Link 1</a>
+                        <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="nav-link" href="#">Link 2</a>

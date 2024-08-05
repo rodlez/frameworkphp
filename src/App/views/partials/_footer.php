@@ -22,8 +22,8 @@
                         Menu
                     </li>
                     <li class="text-warning">
-                        <a href="#" class="footer-link">Inicio</a> |
-                        <a href="#" class="footer-link">Sobre mí</a> |
+                        <a href="/" class="footer-link">Inicio</a> |
+                        <a href="/about" class="footer-link">About</a> |
                         <a href="#" class="footer-link">Contacto</a> |
                         <a href="#" class="footer-link">Blog</a>
                     </li>

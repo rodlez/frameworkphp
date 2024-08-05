@@ -2,6 +2,26 @@
 
 declare(strict_types=1);
 
+
+/**
+ * Sugar Function to escape characters to prevent Cross-site scripting (XSS) is an attack in which an attacker injects malicious executable scripts
+ * into the code of a trusted application or website.
+ * Escaping is the process of converting a character into a different character for security reasons.
+ * @param mixed $value value to escape.
+ * @return string escaped string
+ */
+
+function escapeChar(mixed $value): string
+{
+    // force to return a string using casting (string)
+    // Sometimes you need to change a variable from one data type into another, 
+    // and sometimes you want a variable to have a specific data type. This can be done with casting.
+    return htmlspecialchars((string) $value);
+}
+
+
+
+
 /********************************* FUNCTIONS FOR DEVELOPMENT ************************************************************************************ */
 
 
