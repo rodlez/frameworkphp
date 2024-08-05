@@ -51,9 +51,10 @@ class Router
      * Public Method to dispatching a route in the Router class - display the page content from an specific URL
      * @param string $path route path
      * @param string $method GET, POST, DELETE
+     * @param Container $container Optionally we pass the Container class, in case we want to use the Router class independently
      */
 
-    public function dispatch(string $path, string $method)
+    public function dispatch(string $path, string $method, Container $container = null)
     {
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
@@ -72,8 +73,10 @@ class Router
             // 1 - We are grabbing the class and method name from the route, class grab the first value
             // of the array, function grab the second value
             [$class, $function] = $route['controller'];
+
             // 2 - Create an instance and call the method
-            $controllerInstance = new $class;
+            // if we have a container we running the resolve method providing dependencies to the controller, if not instantiate the class
+            $controllerInstance = $container ? $container->resolve($class) : new $class;
 
             $controllerInstance->{$function}();
         }
