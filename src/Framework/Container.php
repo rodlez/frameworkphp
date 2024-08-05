@@ -47,6 +47,14 @@ class Container
             return new $className;
         }
 
-        showNice($constructor);
+        // 3 - The ReflectionClass has a method to retrieve the parameters
+
+        $parameters = $constructor->getParameters();
+
+        if (count($parameters) === 0) {
+            return new $className;
+        }
+
+        showNice($parameters);
     }
 }
