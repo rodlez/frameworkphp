@@ -12,4 +12,6 @@ class Paths
 {
     // path to the views directory on our project
     public const VIEW = __DIR__ . "/../views";
+    // path to the source directory on our project
+    public const SOURCE = __DIR__ . "/../../";
 }

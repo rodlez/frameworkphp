@@ -22,17 +22,17 @@ require __DIR__ . "../../../vendor/autoload.php";
 
 // import the Framework App Class
 use Framework\App;
+use App\Config\Paths;
 
-// import the HomeController Class
-use App\Controllers\{HomeController, AboutController};
+// To import functions
+use function App\Config\registerRoutes;
 
 // instance of the App Class and return
-$app = new App();
+// include the $containerDefinitionsPath
+$app = new App(Paths::SOURCE . "App/container-definitions.php");
+//$app = new App();
 
-// use the class Magic constant instead the whole path 'use App\Controllers\HomeController;' to avoid typos
-$app->get('/', [HomeController::class, 'home']);
-$app->get('/about', [AboutController::class, 'about']);
-
+registerRoutes($app);
 
 /* Test normalize register methods
 $app->get('about/team');

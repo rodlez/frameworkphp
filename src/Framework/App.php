@@ -18,11 +18,24 @@ class App
     // private -> we do NOT want the router be updated for external sources
     // Name convention -> property with the same name as the class
     private Router $router;
+    // add a Container to use Dependency Injection
+    private Container $container;
 
-    // when the App is instantiated, we have now access to the class Router
-    public function __construct()
+
+    /* when the App is instantiated, we have now access to the classes Router and Container
+    We set the definitions on the construct method of the App class and not in the Container class, because if we want to add new definitions
+    later, the construct method in the Container class in only invoke once, adding the $containerDefinitionsPath
+    */
+
+    public function __construct(string $containerDefinitionsPath = null)
     {
         $this->router = new Router();
+        $this->container = new Container();
+
+        if ($containerDefinitionsPath) {
+            $containerDefinitions = include $containerDefinitionsPath;
+            $this->container->addDefinitions($containerDefinitions);
+        }
     }
 
     public function run()
