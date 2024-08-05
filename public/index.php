@@ -9,5 +9,5 @@ $app = include __DIR__ . '/../src/App/bootstrap.php';
 $app->run();
 
 // Sugar functions to debug
-//showNice($app);
-//debugator($app, 1, 3);
+showNice($app);
+debugator($app, 1, 3);
