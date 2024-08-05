@@ -21,9 +21,27 @@ class Router
 
     public function add(string $method, string $path)
     {
+        $path = $this->normalizePath($path);
         $this->routes[] = [
             'path' => $path,
             'method' => strtoupper($method)
         ];
+    }
+
+    /**
+     * Private Method to normalize routes in the Router class with the format /path/  
+     * @param string $path
+     * @return string normalize path  
+     */
+
+    private function normalizePath(string $path): string
+    {
+        // strip '/' at the beggining and end of the string 
+        $path = trim($path, '/');
+        $path = "/{$path}/";
+        // Apply regex to remove excessive / in the path
+        $path = preg_replace('#[/]{2,}#', '/', $path);
+
+        return $path;
     }
 }

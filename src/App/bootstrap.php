@@ -27,6 +27,10 @@ use Framework\App;
 $app = new App();
 
 $app->get('/');
+// Test normalize register methods
+$app->get('about/team');
+$app->get('/about/team');
+$app->get('/about/team/');
 
 showNice($app);
 
