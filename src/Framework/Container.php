@@ -74,9 +74,30 @@ class Container
             }
 
             // We call the function to get the dependency, the parameters ara type hint with the classes, then we will get the class in the Container with the same class name
-            //$dependencies[] = $this->get($type->getName());
+            $dependencies[] = $this->get($type->getName());
         }
 
-        showNice($parameters);
+        showNice($dependencies);
+    }
+
+    // Method to return an instance of every dependency
+    // We grabbing the factory function for a specific dependency, after doing so we invoking the factory function to grab an instance of the dependency
+
+    public function get(string $id)
+    {
+
+        // check if the key ($id) in the associative array ($definitions) exists.
+        if (!array_key_exists($id, $this->definitions)) {
+            throw new ContainerException("Class {$id} does NOT exists in Container.");
+        }
+
+        // value of the key id will be the factory function in the dependencies array
+        $factory = $this->definitions[$id];
+        // to get the dependency we must invoke the factory function to get the instance of our Container
+        // using this keyword permits to pass the Container instance to the factory function
+        // Now the factory function is allow to grab dependencies manually
+        $dependency = $factory();
+
+        return $dependency;
     }
 }
