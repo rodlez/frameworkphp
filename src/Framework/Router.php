@@ -68,7 +68,14 @@ class Router
                 continue;
                 # code...
             }
-            echo 'route found';
+
+            // 1 - We are grabbing the class and method name from the route, class grab the first value
+            // of the array, function grab the second value
+            [$class, $function] = $route['controller'];
+            // 2 - Create an instance and call the method
+            $controllerInstance = new $class;
+
+            $controllerInstance->{$function}();
         }
     }
 }
