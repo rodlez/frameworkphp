@@ -23,10 +23,14 @@ require __DIR__ . "../../../vendor/autoload.php";
 // import the Framework App Class
 use Framework\App;
 
+// import the HomeController Class
+use App\Controllers\HomeController;
+
 // instance of the App Class and return
 $app = new App();
 
-$app->get('/', ['App\Controllers\HomeController', 'home']);
+// use the class Magic constant instead the whole path 'use App\Controllers\HomeController;' to avoid typos
+$app->get('/', [HomeController::class, 'home']);
 
 /* Test normalize register methods
 $app->get('about/team');
