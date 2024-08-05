@@ -26,4 +26,8 @@ use Framework\App;
 // instance of the App Class and return
 $app = new App();
 
+$app->add('/');
+
+showNice($app);
+
 return $app;
