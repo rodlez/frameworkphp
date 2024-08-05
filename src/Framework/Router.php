@@ -58,6 +58,17 @@ class Router
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
 
-        echo $path . $method;
+        // search for a valid route in the routes array, preg_match -> regex searching for matches
+        // if there is not a match of path or method, we found a valid route and we can associate
+        // the route with the controller
+
+        foreach ($this->routes as $route) {
+            if (!preg_match("#^{$route['path']}$#", $path) || $route['method'] !== $method) {
+                // do not execute more code at this point
+                continue;
+                # code...
+            }
+            echo 'route found';
+        }
     }
 }
