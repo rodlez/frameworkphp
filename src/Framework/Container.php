@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Framework;
 
 // to help inspect a Class
-use ReflectionClass;
+use ReflectionClass, ReflectionNamedType;
 
 use Framework\Exceptions\ContainerException;
 
@@ -53,6 +53,28 @@ class Container
 
         if (count($parameters) === 0) {
             return new $className;
+        }
+
+        // 4 - Validate the parameters, $parameters is an array of instances return by the getParameters() method
+        // then the $param is also an instance of the ReflectionParameter class, we have available methods to view info from a parameter.
+        // Validate to check if the parameters are NOT classes, only if it's a class we can generate an instance.
+
+        $dependencies = [];
+
+        foreach ($parameters as $param) {
+            $name = $param->getName();
+            $type = $param->getType();
+
+            if (!$type) {
+                throw new ContainerException("Failed to resolve class {$className} because param {$name} is missing a type hint.");
+            }
+
+            if (!$type instanceof ReflectionNamedType || $type->isBuiltin()) {
+                throw new ContainerException("Failed to resolve class {$className} because invalid param name.");
+            }
+
+            // We call the function to get the dependency, the parameters ara type hint with the classes, then we will get the class in the Container with the same class name
+            //$dependencies[] = $this->get($type->getName());
         }
 
         showNice($parameters);
