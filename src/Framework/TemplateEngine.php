@@ -39,13 +39,26 @@ class TemplateEngine
 
         ob_start();
 
-        //include $this->resolve($template);
-        include "{$this->basePath}/{$template}";
+        include $this->resolve($template);
 
         $output = ob_get_contents();
 
         ob_end_clean();
 
         return $output;
+    }
+
+    /**
+     * Get the absolute path of the template file used in the render method.
+     *
+     * Concatenate the basePath pass in the construct method in the TemplateEngine class with the path pass as argument
+     *
+     * @param string $path Name of the php file (template) to resolve    
+     * @return string Total Path (basePath/path)
+     */
+
+    public function resolve(string $path)
+    {
+        return "{$this->basePath}/{$path}";
     }
 }
