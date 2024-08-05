@@ -77,7 +77,10 @@ class Container
             $dependencies[] = $this->get($type->getName());
         }
 
-        showNice($dependencies);
+        //showNice($dependencies);
+
+        // create new instances based on the arguments (dependencies array)
+        return $reflectionClass->newInstanceArgs($dependencies);
     }
 
     // Method to return an instance of every dependency

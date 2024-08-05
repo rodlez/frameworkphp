@@ -15,13 +15,11 @@ use App\Config\Paths;
 
 class AboutController
 {
-    private TemplateEngine $view;
+    // We inject now the instance(private TemplateEngine $view) in the __construct method
+    // instead of create using $this->view = new TemplateEngine(Paths::VIEW)
 
-    // to create an instance of the TemplateEngine to render the content    
-
-    public function __construct()
+    public function __construct(private TemplateEngine $view)
     {
-        $this->view = new TemplateEngine(Paths::VIEW);
     }
 
     public function about()
