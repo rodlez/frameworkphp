@@ -25,14 +25,21 @@ use Framework\App;
 use App\Config\Paths;
 
 // To import functions
-use function App\Config\registerRoutes;
+use function App\Config\{registerRoutes, registerMiddleware};
 
 // instance of the App Class and return
 // include the $containerDefinitionsPath
 $app = new App(Paths::SOURCE . "App/container-definitions.php");
-//$app = new App();
+
+// REGISTER A CONTROLLER
+// pass the class name including the namespace. 
+// The controller will create the instance, not in bootstrap, because in the case we have multiple routes, we will need multiple
+// instances created, consuming resources. It's better to call the class and the controller will create the instance if match the path.
+// To run the method of the instance, we pass in an array with the class(App\Controllers\HomeController) and the method(home).
+
 
 registerRoutes($app);
+registerMiddleware($app);
 
 /* Test normalize register methods
 $app->get('about/team');
