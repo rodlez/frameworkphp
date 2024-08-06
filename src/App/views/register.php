@@ -13,7 +13,8 @@
             </div>
 
             <div class="col-8 offset-2 bg-light">
-                <?php showNice($errors) ?>
+                <?php //showNice($errors) 
+                ?>
                 <!-- Form -->
                 <form method="POST" class="contacto-form p-4">
                     <!-- Username -->
@@ -65,6 +66,15 @@
                     <!-- Error Message -->
                     <?php if (array_key_exists('age', $errors)) : ?>
                         <div class="bg-info text-danger mb-4"><?php echo ($errors['age'][0]); ?></div>
+                    <?php endif; ?>
+                    <!-- URL -->
+                    <div class="mb-4">
+                        <label for="socialMediaURL" class="form-label">Social Media Url <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="socialMediaURL" name="socialMediaURL" value="" placeholder="">
+                    </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('socialMediaURL', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['socialMediaURL'][0]); ?></div>
                     <?php endif; ?>
                     <!-- Country -->
                     <div class="mb-4">
