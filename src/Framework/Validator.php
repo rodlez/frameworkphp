@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Framework;
 
 use Framework\Contracts\RuleInterface;
+use Framework\Exceptions\ValidationException;
 
 // not need to be global, because will be use only in the Services ValidatorService
 
@@ -40,7 +41,7 @@ class Validator
 
         // if there is errors, the errors array is not empty
         if (count($errors)) {
-            showNice($errors);
+            throw new ValidationException();
         }
     }
 }
