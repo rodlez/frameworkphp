@@ -20,14 +20,17 @@ class HomeController
 
     public function __construct(private TemplateEngine $view)
     {
+        // To check that HomeController and TemplateDataMiddleware have 2 different instances of the object(Framework\TemplateEngine)#11
+        // After apply Singleton Pattern they both have the same instance
+        // var_dump($this->view);
+        // echo "<br />";
     }
 
 
     public function home()
     {
-        echo $this->view->render("index.php", [
-            // Template information
-            'title' => 'Home Page'
-        ]);
+        // Because of the Singleton Pattern, Now if we do not specify a title, the App will take the title define
+        // on the TemplateDataMiddleware
+        echo $this->view->render("index.php");
     }
 }

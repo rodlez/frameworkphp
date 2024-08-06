@@ -14,6 +14,10 @@ class TemplateDataMiddleware implements MiddlewareInterface
 {
     public function __construct(private TemplateEngine $view)
     {
+        // To check that HomeController and TemplateDataMiddleware have 2 different instances of the object(Framework\TemplateEngine)#14
+        // After apply Singleton Pattern they both have the same instance
+        // var_dump($this->view);
+        // echo "<br />";
     }
 
     // Set the default title of the page and go to the next function

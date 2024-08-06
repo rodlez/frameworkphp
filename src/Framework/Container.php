@@ -13,6 +13,9 @@ class Container
 {
     // array with the definitions to create the instances of the classes
     private array $definitions = [];
+    // to make track of the instances of a class, to apply the Singleton Pattern
+    // A design Pattern for restricting a class to a single instance.
+    private array $resolved = [];
 
     public function addDefinitions(array $newDefinitions)
     {
@@ -94,12 +97,21 @@ class Container
             throw new ContainerException("Class {$id} does NOT exists in Container.");
         }
 
+        // SINGLETON PATTERN -> check if the instance exists there is no point in create a new one.
+        // if the class ($id) exists return the instance and NOT create another.
+        if (array_key_exists($id, $this->resolved)) {
+            return $this->resolved[$id];
+        }
+
         // value of the key id will be the factory function in the dependencies array
         $factory = $this->definitions[$id];
         // to get the dependency we must invoke the factory function to get the instance of our Container
         // using this keyword permits to pass the Container instance to the factory function
         // Now the factory function is allow to grab dependencies manually
         $dependency = $factory();
+
+        // to have a track of the instances for the class in the array resolved 
+        $this->resolved[$id] = $dependency;
 
         return $dependency;
     }
