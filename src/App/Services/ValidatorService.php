@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use Framework\Validator;
-use Framework\Rules\{RequiredRule};
+use Framework\Rules\{RequiredRule, EmailRule};
 
 // SERVICES are Not tied to an specific Controller, should be available to any Controller who needs them
 
@@ -19,6 +19,7 @@ class ValidatorService
         $this->validator = new Validator();
         // add the RULES to the construct method to be available
         $this->validator->add("required", new RequiredRule());
+        $this->validator->add("email", new EmailRule());
     }
 
     public function validateRegister(array $formData)
@@ -26,7 +27,7 @@ class ValidatorService
         // we pass an associative array with the field as key and the rule as value(if we have different rules for the same filed we add it to the array)
         $this->validator->validate($formData, [
             'userName' => ['required'],
-            'email' => ['required'],
+            'email' => ['required', 'email'],
             'phone' => ['required'],
             'age' => ['required'],
             'country' => ['required'],
