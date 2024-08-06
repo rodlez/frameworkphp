@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use Framework\Validator;
-use Framework\Rules\{RequiredRule, EmailRule};
+use Framework\Rules\{RequiredRule, EmailRule, MinRule};
 
 // SERVICES are Not tied to an specific Controller, should be available to any Controller who needs them
 
@@ -20,6 +20,7 @@ class ValidatorService
         // add the RULES to the construct method to be available
         $this->validator->add("required", new RequiredRule());
         $this->validator->add("email", new EmailRule());
+        $this->validator->add("min", new MinRule());
     }
 
     public function validateRegister(array $formData)
