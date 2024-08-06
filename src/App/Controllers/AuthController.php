@@ -9,16 +9,18 @@ namespace App\Controllers;
 // Responsible to render the content from the Home Page
 
 use Framework\TemplateEngine;
-
+use App\Services\ValidatorService;
 
 class AuthController
 {
 
     // to create an instance of the TemplateEngine to render the content
     // moving the property TemplateEngine as a parameter of the construct method to look for dependencies    
+    // making an instance of the ValidatorService to be accessible by the AuthController class
 
     public function __construct(
-        private TemplateEngine $view
+        private TemplateEngine $view,
+        private ValidatorService $validatorService
     ) {
         // we do NOT need to manually create an instance of the TemplateEngine class
         // $this->view = new TemplateEngine(Paths::VIEW);

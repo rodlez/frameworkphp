@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Framework\{TemplateEngine};
 use App\Config\Paths;
 
+use App\Services\ValidatorService;
+
 // adding TemplateEngine class to the definitions
 
 // return the associative array with the key (name of the class) and the value (the function to generate the class)
@@ -14,5 +16,6 @@ use App\Config\Paths;
 
 
 return [
-    TemplateEngine::class => fn () => new TemplateEngine(Paths::VIEW)
+    TemplateEngine::class => fn () => new TemplateEngine(Paths::VIEW),
+    ValidatorService::class => fn () => new ValidatorService()
 ];
