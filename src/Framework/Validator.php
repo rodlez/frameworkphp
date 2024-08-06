@@ -18,8 +18,21 @@ class Validator
         $this->rules[$alias] = $rule;
     }
 
-    public function validate(array $formData)
+    // validation will perform a field at a time
+    public function validate(array $formData, array $fields)
     {
-        showNice($formData);
+        // every field in the array contains an array of rules(for example the required rule. SEE the ValidatorService validateRegister) and fieldName as the field to the key from the associative array
+        foreach ($fields as $filedName => $rules) {
+            // multiple rules can exists for a field, we need to loop also for each rule assign to a field
+            foreach ($rules as $rule) {
+                // grab the rule instance by the alias
+                $ruleValidator = $this->rules[$rule];
+                if ($ruleValidator->validate($formData, $filedName, [])) {
+                    continue;
+                }
+
+                echo "Error";
+            }
+        }
     }
 }

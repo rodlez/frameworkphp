@@ -23,6 +23,16 @@ class ValidatorService
 
     public function validateRegister(array $formData)
     {
-        $this->validator->validate($formData);
+        // we pass an associative array with the field as key and the rule as value(if we have different rules for the same filed we add it to the array)
+        $this->validator->validate($formData, [
+            'userName' => ['required'],
+            'email' => ['required'],
+            'phone' => ['required'],
+            'age' => ['required'],
+            'country' => ['required'],
+            'password' => ['required'],
+            'confirmPassword' => ['required'],
+            'tos' => ['required']
+        ]);
     }
 }

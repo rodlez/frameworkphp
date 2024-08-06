@@ -19,7 +19,7 @@
                     <!-- Username -->
                     <div class="mb-4">
                         <label for="userName" class="form-label">Username <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="userName" name="userName" value="" placeholder="" required>
+                        <input type="text" class="form-control" id="userName" name="userName" value="" placeholder="">
                     </div>
                     <!-- Email -->
                     <div class="mb-4">
@@ -30,7 +30,7 @@
                                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                                 </svg>
                             </span>
-                            <input type="email" class="form-control" id="email" name="email" value="" placeholder="" required>
+                            <input type="email" class="form-control" id="email" name="email" value="" placeholder="">
                         </div>
                     </div>
                     <!-- Phone -->
@@ -44,6 +44,11 @@
                             </span>
                             <input type="tel" class="form-control" id="phone" name="phone" value="" placeholder="">
                         </div>
+                    </div>
+                    <!-- Age -->
+                    <div class="mb-4">
+                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="age" name="age" value="" placeholder="">
                     </div>
                     <!-- Country -->
                     <div class="mb-4">
@@ -59,16 +64,16 @@
                     <!-- Password -->
                     <div class="mb-4">
                         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="" required>
+                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="">
                     </div>
                     <!-- Confirm Password -->
                     <div class="mb-4">
                         <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="" placeholder="" required>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="" placeholder="">
                     </div>
                     <!-- Terms of service -->
                     <div class="mb-2">
-                        <input type="checkbox" id="agree-check" name="tos" required />
+                        <input type="checkbox" id="agree-check" name="tos" />
                         <label for="agree-check" class="form-check-label">
                             I accept the <a href="#" class="text-dark">terms of service</a>
                         </label>
