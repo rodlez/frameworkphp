@@ -31,7 +31,7 @@ class Container
     {
         // ReflectionClass creates an instance of the class that we pass
         $reflectionClass = new ReflectionClass($className);
-        showNice($reflectionClass);
+        //showNice($reflectionClass);
 
         // 1 - Validate the class to know if the class can be instantiated, for example abstract classes can NOT
 

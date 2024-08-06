@@ -16,8 +16,12 @@ class TemplateDataMiddleware implements MiddlewareInterface
     {
     }
 
+    // Set the default title of the page and go to the next function
+
     public function process(callable $next)
     {
-        echo "Template data middleware";
+        $this->view->addGlobal('title', 'App Title');
+        // call the next function, if not the Controller will never handle the request
+        $next();
     }
 }

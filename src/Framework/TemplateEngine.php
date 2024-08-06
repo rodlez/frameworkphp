@@ -6,6 +6,8 @@ namespace Framework;
 
 class TemplateEngine
 {
+    // Array to store variables accessible to ALL Templates
+    private array $globalTemplateData = [];
 
     // We set a base path, we can NOT assume that all the projects would have a views directory
     // $basePath store the absolute path for the directory with our templates
@@ -30,7 +32,7 @@ class TemplateEngine
         // takes any key in the array and creates a variable with their respective values base on the key names
         extract($data, EXTR_SKIP);
         // after the data, we also extract the global variables for the templates
-        //extract($this->globalTemplateData, EXTR_SKIP);
+        extract($this->globalTemplateData, EXTR_SKIP);
 
         // Create an output_buffer to prevent PHP sending content 
         // to the browser before any line has finished running or the buffer is closed  
@@ -60,5 +62,19 @@ class TemplateEngine
     public function resolve(string $path)
     {
         return "{$this->basePath}/{$path}";
+    }
+
+    /**
+     * Add in the TemplateEngine global array (globalTemplateData) a key-value pair
+     *
+     * The data will be globally accessible to all templates
+     *
+     * @param string $key e.g. csrfToken
+     * @param mixed $value e.g. $_SESSION['token']
+     */
+
+    public function addGlobal(string $key, mixed $value)
+    {
+        $this->globalTemplateData[$key] = $value;
     }
 }
