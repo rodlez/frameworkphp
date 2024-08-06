@@ -29,13 +29,26 @@ class Validator
         foreach ($fields as $fieldName => $rules) {
             // multiple rules can exists for a field, we need to loop also for each rule assign to a field
             foreach ($rules as $rule) {
+
+                // to permit custom parameters in a rule
+                $ruleParams = [];
+
+                // str_contains to search if : is in the $rule field
+                if (str_contains($rule, ':')) {
+                    // explode to split the string using the character (:), and store in 2 arrays $rule and $ruleParams
+                    [$rule, $ruleParams] = explode(':', $rule);
+                    // separate the possible ruleParams, that will be separated with the character (,)
+                    $ruleParams = explode(',', $ruleParams);
+                }
+
                 // grab the rule instance by the alias
                 $ruleValidator = $this->rules[$rule];
-                if ($ruleValidator->validate($formData, $fieldName, [])) {
+
+                if ($ruleValidator->validate($formData, $fieldName, $ruleParams)) {
                     continue;
                 }
 
-                $errors[$fieldName][] = $ruleValidator->getMessage($formData, $fieldName, []);
+                $errors[$fieldName][] = $ruleValidator->getMessage($formData, $fieldName, $ruleParams);
             }
         }
 

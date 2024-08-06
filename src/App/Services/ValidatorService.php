@@ -29,7 +29,7 @@ class ValidatorService
             'userName' => ['required'],
             'email' => ['required', 'email'],
             'phone' => ['required'],
-            'age' => ['required'],
+            'age' => ['required', 'min:18'],
             'country' => ['required'],
             'password' => ['required'],
             'confirmPassword' => ['required'],
