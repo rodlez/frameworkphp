@@ -6,7 +6,7 @@ namespace App\Config;
 
 use Framework\App;
 
-use App\Middleware\{TemplateDataMiddleware, ValidationExceptionMiddleware, SessionMiddleware};
+use App\Middleware\{TemplateDataMiddleware, ValidationExceptionMiddleware, SessionMiddleware, FlashMiddleware};
 
 // We create a function and NOT a class because Middleware can only be registered through the App instance, we are going to accept the App instance as a parameter
 
@@ -18,6 +18,7 @@ function registerMiddleware(App $app)
 
     $app->addMiddleware(TemplateDataMiddleware::class);
     $app->addMiddleware(ValidationExceptionMiddleware::class);
+    $app->addMiddleware(FlashMiddleware::class);
 
     // Session is the last, then is executed first and the other Middleware will have access to the session.
     $app->addMiddleware(SessionMiddleware::class);

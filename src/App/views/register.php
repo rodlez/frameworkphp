@@ -13,7 +13,7 @@
             </div>
 
             <div class="col-8 offset-2 bg-light">
-
+                <?php showNice($errors) ?>
                 <!-- Form -->
                 <form method="POST" class="contacto-form p-4">
                     <!-- Username -->
@@ -21,6 +21,10 @@
                         <label for="userName" class="form-label">Username <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="userName" name="userName" value="" placeholder="">
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('userName', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['userName'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Email -->
                     <div class="mb-4">
                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -33,6 +37,10 @@
                             <input type="email" class="form-control" id="email" name="email" value="" placeholder="">
                         </div>
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('email', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['email'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Phone -->
                     <div class="mb-4">
                         <label for="phone" class="form-label">Phone</label>
@@ -45,11 +53,19 @@
                             <input type="tel" class="form-control" id="phone" name="phone" value="" placeholder="">
                         </div>
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('phone', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['phone'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Age -->
                     <div class="mb-4">
                         <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
                         <input type="number" class="form-control" id="age" name="age" value="" placeholder="">
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('age', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['age'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Country -->
                     <div class="mb-4">
                         <label for="country" class="form-label">Country</label>
@@ -61,16 +77,28 @@
                             <option value="Invalid">Invalid Country</option>
                         </select>
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('country', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['country'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Password -->
                     <div class="mb-4">
                         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="password" name="password" value="" placeholder="">
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('password', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['password'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Confirm Password -->
                     <div class="mb-4">
                         <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="" placeholder="">
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('confirmPassword', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['confirmPassword'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Terms of service -->
                     <div class="mb-2">
                         <input type="checkbox" id="agree-check" name="tos" />
@@ -78,6 +106,10 @@
                             I accept the <a href="#" class="text-dark">terms of service</a>
                         </label>
                     </div>
+                    <!-- Error Message -->
+                    <?php if (array_key_exists('tos', $errors)) : ?>
+                        <div class="bg-info text-danger mb-4"><?php echo ($errors['tos'][0]); ?></div>
+                    <?php endif; ?>
                     <!-- Send -->
                     <div class="mb-4">
                         <div class="d-grid">
