@@ -20,6 +20,20 @@ function escapeChar(mixed $value): string
 }
 
 
+/**
+ * Redirect function using HTTP headers.  
+ * HTTP headers let the client and the server pass information with a HTTP request and response
+ */
+
+function redirectTo(string $path)
+{
+    // the header need the Location path and the code
+    header("Location: {$path}");
+
+    // 302 represents temporary redirection code: the resource requested has been temporarily moved to the URL given by the Location header
+    http_response_code(302);
+    exit;
+}
 
 
 /********************************* FUNCTIONS FOR DEVELOPMENT ************************************************************************************ */
