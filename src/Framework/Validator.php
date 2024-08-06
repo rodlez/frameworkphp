@@ -41,7 +41,7 @@ class Validator
 
         // if there is errors, the errors array is not empty
         if (count($errors)) {
-            throw new ValidationException();
+            throw new ValidationException($errors);
         }
     }
 }

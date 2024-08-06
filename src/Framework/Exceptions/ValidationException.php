@@ -16,7 +16,7 @@ class ValidationException extends RuntimeException
 {
     // define by default the HTTP Status Code 422 - Unprocessable Content. The request was well-formed but was unable to be followed due to semantic errors.
     // making the errors array public will be accessible outside the Exception, can be access in the Middleware
-    public function __construct(int $code = 422)
+    public function __construct(public array $errors, int $code = 422)
     {
         // invoke the parent construct method to use the information
         parent::__construct(code: $code);

@@ -16,7 +16,9 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
         try {
             $next();
         } catch (ValidationException $e) {
-            redirectTo("/register");
+            // to grab the URL where the user was previously, no need to hardcode the page of the form(e.g /register), because we grab the URL using this referer SERVER variable.
+            $referer = $_SERVER['HTTP_REFERER'];
+            redirectTo($referer);
         }
     }
 }
