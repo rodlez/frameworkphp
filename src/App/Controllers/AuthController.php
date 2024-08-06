@@ -38,4 +38,27 @@ class AuthController
             'subtitle' => "Fill the form to register",
         ]);
     }
+
+    /**
+     * Receives the register form data using the HTTPD POST method 
+     * 
+     * * 1 - Validate the form. 
+     * * 2 - Check if the Email already exists.
+     * * 3 - Create New user in the DB and generate a $_SESSION with the user values.
+     * * 4 - Redirect to the main page.
+     */
+
+    public function register()
+    {
+        showNice($_POST);
+        /*
+        $this->validatorService->validateRegister($_POST);
+
+        $this->userService->isEmailTaken($_POST['email']);
+
+        $this->userService->createNewUser($_POST);
+
+        redirectTo('/');
+        */
+    }
 }

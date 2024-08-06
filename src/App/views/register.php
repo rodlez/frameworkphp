@@ -15,7 +15,7 @@
             <div class="col-8 offset-2 bg-light">
 
                 <!-- Form -->
-                <form action="#" class="contacto-form p-4">
+                <form method="POST" class="contacto-form p-4">
                     <!-- Username -->
                     <div class="mb-4">
                         <label for="userName" class="form-label">Username <span class="text-danger">*</span></label>
@@ -68,7 +68,7 @@
                     </div>
                     <!-- Terms of service -->
                     <div class="mb-2">
-                        <input type="checkbox" id="agree-check" required />
+                        <input type="checkbox" id="agree-check" name="tos" required />
                         <label for="agree-check" class="form-check-label">
                             I accept the <a href="#" class="text-dark">terms of service</a>
                         </label>

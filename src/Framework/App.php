@@ -58,6 +58,17 @@ class App
         $this->router->add('GET', $path, $controller);
     }
 
+    /**
+     * Public Method to register a route using the add method in the Router class
+     * @param string $path route path
+     * @param array $controller array with the Controller class and the method
+     */
+
+    public function post(string $path, array $controller)
+    {
+        $this->router->add('POST', $path, $controller);
+    }
+
     // Developers do NOT have access to the Router via the Application class, we create it here.
 
     /**
