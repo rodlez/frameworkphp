@@ -80,7 +80,24 @@ class Router
             // if we have a container we running the resolve method providing dependencies to the controller, if not instantiate the class
             $controllerInstance = $container ? $container->resolve($class) : new $class;
 
-            $controllerInstance->{$function}();
+            // 3 - Middleware run before the Controller render Content, action will be an arrow function with the invocations as the body
+            $action = fn () => $controllerInstance->{$function}();
+
+            // 4 - add middleware
+            foreach ($this->middlewares as $middleware) {
+                // we only have the class name, we must instantiate first. Instead of doing manually
+                // the container resolve method. if the Container is provided we can resolve the dependencies using Dependency Injection if not we create it
+                $middlewareInstance = $container ? $container->resolve($middleware) : new $middleware;
+                // chaining callback functions, action variable to an arrow function when we call the process method, and pass the next middleware ($action)
+                $action = fn () => $middlewareInstance->process($action);
+                // the Controller will be the last class to execute his logic
+            }
+
+            // 5 - invoke action variable
+            $action();
+
+            // adding return statement to prevent another route for become active
+            return;
         }
     }
 
