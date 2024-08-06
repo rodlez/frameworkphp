@@ -6,7 +6,7 @@ namespace App\Config;
 
 use Framework\App;
 
-use App\Middleware\{TemplateDataMiddleware};
+use App\Middleware\{TemplateDataMiddleware, ValidationExceptionMiddleware};
 
 // We create a function and NOT a class because Middleware can only be registered through the App instance, we are going to accept the App instance as a parameter
 
@@ -17,4 +17,5 @@ function registerMiddleware(App $app)
     // Important register the token before the SessionMiddleware, if not we could not store the token
 
     $app->addMiddleware(TemplateDataMiddleware::class);
+    $app->addMiddleware(ValidationExceptionMiddleware::class);
 }
