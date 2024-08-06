@@ -27,6 +27,12 @@ class FlashMiddleware implements MiddlewareInterface
         // To destroy the errors variable session to not show the errors if we change the page or refresh
         unset($_SESSION['errors']);
 
+        // oldFormData is the name key in the array, the global variable $_SESSION['oldFormData'] is the value in the array. ?? if not oldFormData the value is an empty array []
+        $this->view->addGlobal('oldFormData', $_SESSION['oldFormData'] ?? []);
+
+        // To destroy the oldFormData variable session to not show the oldFormData if we change the page or refresh
+        unset($_SESSION['oldFormData']);
+
         $next();
     }
 }
