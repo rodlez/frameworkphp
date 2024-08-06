@@ -57,4 +57,16 @@ class App
     {
         $this->router->add('GET', $path, $controller);
     }
+
+    // Developers do NOT have access to the Router via the Application class, we create it here.
+
+    /**
+     * Public Method to add Middleware to our Router through the Application class
+     * @param string $middleware class to add
+     */
+
+    public function addMiddleware(string $middleware)
+    {
+        $this->router->addMiddleware($middleware);
+    }
 }

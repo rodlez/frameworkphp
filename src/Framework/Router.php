@@ -12,6 +12,8 @@ by initializing this class
 class Router
 {
     private array $routes = [];
+    // array to store the possible middlewares
+    private array $middlewares = [];
 
     /**
      * Public Method to add routes in the Router class
@@ -80,5 +82,18 @@ class Router
 
             $controllerInstance->{$function}();
         }
+    }
+
+    // Similar to controllers, middleware is going to be define as classes. We want the middleware to have access to the Container to inject dependencies
+    // Middleware may require dependencies too. WE are going to accept the class name, this way we can instantiate the middleware with its respective dependencies. 
+
+    /**
+     * Add parameters to the middlewares array
+     * @param string $middleware class name to add
+     */
+
+    public function addMiddleware(string $middleware)
+    {
+        $this->middlewares[] = $middleware;
     }
 }
