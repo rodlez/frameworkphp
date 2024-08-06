@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use Framework\Validator;
-use Framework\Rules\{RequiredRule, EmailRule, MinRule};
+use Framework\Rules\{RequiredRule, EmailRule, MinRule, InRule};
 
 // SERVICES are Not tied to an specific Controller, should be available to any Controller who needs them
 
@@ -21,6 +21,7 @@ class ValidatorService
         $this->validator->add("required", new RequiredRule());
         $this->validator->add("email", new EmailRule());
         $this->validator->add("min", new MinRule());
+        $this->validator->add("in", new InRule());
     }
 
     public function validateRegister(array $formData)
@@ -31,7 +32,7 @@ class ValidatorService
             'email' => ['required', 'email'],
             'phone' => ['required'],
             'age' => ['required', 'min:18'],
-            'country' => ['required'],
+            'country' => ['required', 'in:Spain,USA,Canada,Mexico'],
             'password' => ['required'],
             'confirmPassword' => ['required'],
             'tos' => ['required']
