@@ -52,15 +52,8 @@ class AuthController
 
     public function register()
     {
-        showNice($_POST);
-        /*
+        //showNice($_POST);
+
         $this->validatorService->validateRegister($_POST);
-
-        $this->userService->isEmailTaken($_POST['email']);
-
-        $this->userService->createNewUser($_POST);
-
-        redirectTo('/');
-        */
     }
 }
