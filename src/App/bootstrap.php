@@ -24,8 +24,16 @@ require __DIR__ . "../../../vendor/autoload.php";
 use Framework\App;
 use App\Config\Paths;
 
+// ENVIRONMENT variables should be loaded as soon possible, before the Container is instantiated
+use Dotenv\Dotenv;
+
 // To import functions
 use function App\Config\{registerRoutes, registerMiddleware};
+
+// instance of the Environment variables, we need to provide the path, (path where is the .env)
+$dotenv = Dotenv::createImmutable(PATHS::ROOT);
+// now the environment variables are accessible to the entire app
+$dotenv->load();
 
 // instance of the App Class and return
 // include the $containerDefinitionsPath
