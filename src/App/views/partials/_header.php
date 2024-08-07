@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- DEVELOPMENT -->
+<?php
+showNice($_SESSION);
+?>
+<!-- ***********  -->
 
 <head>
     <meta charset="UTF-8">

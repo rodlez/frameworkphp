@@ -74,4 +74,13 @@ class Database
     {
         return $this->stmt->fetchColumn();
     }
+
+    /**
+     * Find one single result
+     */
+
+    public function find()
+    {
+        return $this->stmt->fetch();
+    }
 }
