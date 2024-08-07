@@ -56,5 +56,9 @@ class AuthController
         //showNice($_POST);
 
         $this->validatorService->validateRegister($_POST);
+
+        $this->userService->isEmailTaken($_POST['email']);
+
+        redirectTo('/');
     }
 }

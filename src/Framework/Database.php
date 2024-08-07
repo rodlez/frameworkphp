@@ -65,4 +65,13 @@ class Database
             return $this;
         }
     }
+
+    /**
+     * Alias for fetchColumn to use in combination with SQL COUNT() to know the total number of results for a query
+     */
+
+    public function count()
+    {
+        return $this->stmt->fetchColumn();
+    }
 }
