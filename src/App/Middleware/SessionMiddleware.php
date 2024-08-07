@@ -31,6 +31,17 @@ class SessionMiddleware implements MiddlewareInterface
             throw new SessionException("Headers already sent. Consider enabling output buffering. Data outputted from {$filename} - Line: {$line}");
         }
 
+        // to configure for security some of the cookie params: https://www.php.net/manual/en/function.session-set-cookie-params.php
+        // secure -> prevent cookies to sent on an insecure connection, we use env variable to specify development or production
+        // httponly -> true JS code can NOT access the cookie
+        // samesite -> prevent the cookie to be sent to another site
+
+        session_set_cookie_params([
+            'secure' => $_ENV['APP_ENV'] === 'production',
+            'httponly' => true,
+            'samesite' => 'lax'
+        ]);
+
         session_start();
 
         $next();
