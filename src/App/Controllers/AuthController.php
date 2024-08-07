@@ -60,6 +60,8 @@ class AuthController
 
         $this->userService->isEmailTaken($_POST['email']);
 
+        $this->userService->createNewUser($_POST);
+
         redirectTo('/');
     }
 }
