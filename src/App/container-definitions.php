@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Framework\{TemplateEngine, Database};
+use Framework\{TemplateEngine, Database, Container};
 use App\Config\Paths;
 
-use App\Services\ValidatorService;
+use App\Services\{ValidatorService, UserService};
 
 // adding TemplateEngine class to the definitions
 
@@ -27,5 +27,12 @@ return [
         ],
         $_ENV['DB_USER'],
         $_ENV['DB_PASS']
-    )
+    ),
+    // Inject an instance of the Database class in the UserService
+    UserService::class => function (Container $container) {
+        // using the Container get method now we can grab the Database instance
+        $db = $container->get(Database::class);
+
+        return new UserService($db);
+    }
 ];

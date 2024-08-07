@@ -105,10 +105,11 @@ class Container
 
         // value of the key id will be the factory function in the dependencies array
         $factory = $this->definitions[$id];
+
         // to get the dependency we must invoke the factory function to get the instance of our Container
         // using this keyword permits to pass the Container instance to the factory function
         // Now the factory function is allow to grab dependencies manually
-        $dependency = $factory();
+        $dependency = $factory($this);
 
         // to have a track of the instances for the class in the array resolved 
         $this->resolved[$id] = $dependency;
