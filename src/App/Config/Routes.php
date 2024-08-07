@@ -33,4 +33,6 @@ function registerRoutes(App $app)
     // Login Page
     $app->get('/login', [AuthController::class, 'loginView'])->add(GuestOnlyMiddleware::class);
     $app->post('/login', [AuthController::class, 'login'])->add(GuestOnlyMiddleware::class);
+    // Logout
+    $app->get('/logout', [AuthController::class, 'logout'])->add(AuthRequiredMiddleware::class);
 }

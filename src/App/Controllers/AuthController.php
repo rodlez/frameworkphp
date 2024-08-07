@@ -96,4 +96,15 @@ class AuthController
 
         redirectTo('/');
     }
+
+    /**
+     * Destroy the user SESSION and delete the cookie
+     */
+
+    public function logout()
+    {
+        $this->userService->logout();
+
+        redirectTo('/login');
+    }
 }

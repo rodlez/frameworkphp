@@ -128,4 +128,43 @@ class UserService
          $this->log->accessLog('login');
          */
     }
+
+    /**
+     * Destroy the user SESSION and delete the cookie
+     * 
+     * * To COMPLETE delete the SESSION and the Cookie in the Browser, we use session_destroy() and setcookie()
+     * * If we want to track the user after logout we use unset() AND session_regenerate_id()
+     */
+
+    public function logout()
+    {
+        /*
+         IF we want to track the user after logout we use unset() AND session_regenerate_id()         
+         To logout delete the user value in the SESSION array. This way can continue tracking user's info after the logout
+         unset($_SESSION['user']);
+         regenerate the PHPSESSIONID cookie in the browser, but not destroy the Cookie
+         session_regenerate_id();
+         */
+
+        /* TO COMPLETE delete the SESSION and the Cookie in the Browser, we use session_destroy() AND setcookie() */
+
+        // delete ALL the data store in the SESSION array. We can NOT track the user after this
+        session_destroy();
+
+        // get all the params to delete the Cookie. To the Cookie expired define a date now - random seconds
+        $params = session_get_cookie_params();
+
+        setcookie(
+            'PHPSESSID',
+            '',
+            time() - 3600,
+            $params['path'],
+            $params['domain'],
+            $params['secure'],
+            $params['httponly']
+        );
+
+        // LOG - LOGOUT
+        //$this->log->accessLog('logout');
+    }
 }

@@ -48,10 +48,13 @@ showNice($_SESSION);
                         <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Link 1</a>
+                    </li>
+                    <li class="nav-item px-2">
                         <a class="nav-link" href="#">Link 2</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link" href="#">Link 3</a>
+                        <a class="nav-link" href="/logout" onclick="return confirm('Are you sure you want to logout?');">Logout</a>
                     </li>
                 </ul>
                 <!-- Social Icons outside the ul to properly align them -->
