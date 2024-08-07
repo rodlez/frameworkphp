@@ -28,7 +28,8 @@ class Router
         $this->routes[] = [
             'path' => $path,
             'method' => strtoupper($method),
-            'controller' => $controller
+            'controller' => $controller,
+            'middlewares' => [],
         ];
     }
 
@@ -83,8 +84,10 @@ class Router
             // 3 - Middleware run before the Controller render Content, action will be an arrow function with the invocations as the body
             $action = fn () => $controllerInstance->{$function}();
 
+            $allMiddleware = [...$route['middlewares'], ...$this->middlewares];
+
             // 4 - add middleware
-            foreach ($this->middlewares as $middleware) {
+            foreach ($allMiddleware as $middleware) {
                 // we only have the class name, we must instantiate first. Instead of doing manually
                 // the container resolve method. if the Container is provided we can resolve the dependencies using Dependency Injection if not we create it
                 $middlewareInstance = $container ? $container->resolve($middleware) : new $middleware;
@@ -112,5 +115,19 @@ class Router
     public function addMiddleware(string $middleware)
     {
         $this->middlewares[] = $middleware;
+    }
+
+    /**
+     * Add middlewares to a Route
+     * @param string $middleware class name to add
+     */
+
+    public function addRouteMiddleware(string $middleware)
+    {
+
+        // Middleware will be apply to the last route registered
+        $lastRouteKey = array_key_last($this->routes);
+
+        $this->routes[$lastRouteKey]['middlewares'][] = $middleware;
     }
 }

@@ -51,22 +51,28 @@ class App
      * Public Method to register a route using the add method in the Router class
      * @param string $path route path
      * @param array $controller array with the Controller class and the method
+     * @return App to chain a method to add Middleware
      */
 
-    public function get(string $path, array $controller)
+    public function get(string $path, array $controller): App
     {
         $this->router->add('GET', $path, $controller);
+
+        return $this;
     }
 
     /**
      * Public Method to register a route using the add method in the Router class
      * @param string $path route path
      * @param array $controller array with the Controller class and the method
+     * @return App to chain a method to add Middleware
      */
 
-    public function post(string $path, array $controller)
+    public function post(string $path, array $controller): App
     {
         $this->router->add('POST', $path, $controller);
+
+        return $this;
     }
 
     // Developers do NOT have access to the Router via the Application class, we create it here.
@@ -79,5 +85,15 @@ class App
     public function addMiddleware(string $middleware)
     {
         $this->router->addMiddleware($middleware);
+    }
+
+    /**
+     * Public Method to add RouteMiddleware to our Router through the Application class
+     * @param string $middleware class to add
+     */
+
+    public function add(string $middleware)
+    {
+        $this->router->addRouteMiddleware($middleware);
     }
 }
