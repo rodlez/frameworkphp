@@ -64,4 +64,19 @@ class AuthController
 
         redirectTo('/');
     }
+
+    /**
+     * Render the registration form (login.php) using the render method in the TemplateEngine class
+     * this method has an Optional array to pass variables
+     */
+
+    public function loginView()
+    {
+
+        echo $this->view->render("login.php", [
+            'title' => 'Login',
+            'sitemap' => '<a href="/">Home</a> / <b>Login</b>',
+            'subtitle' => "Use your email and password to access to the App.",
+        ]);
+    }
 }
