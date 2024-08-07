@@ -53,29 +53,32 @@ showNice($_SESSION);
                     <li class="nav-item px-2">
                         <a class="nav-link" href="#">Link 2</a>
                     </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="/logout" onclick="return confirm('Are you sure you want to logout?');">Logout</a>
-                    </li>
-                </ul>
-                <!-- Social Icons outside the ul to properly align them -->
-                <div class="social-icons">
-                    <span class="nav-item">
-                        <span class="fa-stack">
-                            <a href="#" target="_blank">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-linkedin fa-stack-1x"></i>
-                            </a>
+                    <!-- Conditional Rendering if the user is login -->
+                    <?php if (isset($_SESSION['user'])) : ?>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="/logout" onclick="return confirm('Are you sure you want to logout?');">Logout</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <!-- Social Icons outside the ul to properly align them -->
+                    <div class="social-icons">
+                        <span class="nav-item">
+                            <span class="fa-stack">
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x"></i>
+                                </a>
+                            </span>
                         </span>
-                    </span>
-                    <span class="nav-item">
-                        <span class="fa-stack">
-                            <a href="#" target="_blank">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-instagram fa-stack-1x"></i>
-                            </a>
+                        <span class="nav-item">
+                            <span class="fa-stack">
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-instagram fa-stack-1x"></i>
+                                </a>
+                            </span>
                         </span>
-                    </span>
-                </div>
+                    </div>
             </div>
         </div>
     </nav>
