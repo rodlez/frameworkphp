@@ -29,7 +29,8 @@ class AuthController
     }
 
     /**
-     * Render the registration form (register.php) using the render method in the TemplateEngine class
+     * Render the registration form (register.php) using the render method in the TemplateEngine class, 
+     * this method has an Optional array to pass variables
      */
 
     public function registerView()
