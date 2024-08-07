@@ -98,6 +98,9 @@ class UserService
             throw new ValidationException(['password' => ['Invalid credentials.']]);
         }
 
+        // before we create the session we regenerated to have a cookie with a new sessionid in the browser
+        session_regenerate_id();
+
         // Save user's info in a SESSION
         $_SESSION['user'] = $user->id;
 
