@@ -79,4 +79,21 @@ class AuthController
             'subtitle' => "Use your email and password to access to the App.",
         ]);
     }
+
+    /**
+     * Receives the register form data using the HTTPD POST method 
+     * 
+     * * 1 - Validate the form. 
+     * * 2 - If the credentials match, get the user info from the DB and generate a $_SESSION with the user values.
+     * * 3 - Redirect to the main page.
+     */
+
+    public function login()
+    {
+        $this->validatorService->validateLogin($_POST);
+
+        //$this->userService->login($_POST);
+
+        redirectTo('/');
+    }
 }

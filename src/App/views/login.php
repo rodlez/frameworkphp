@@ -36,7 +36,7 @@
                             <span class="input-group-text bg-primary">
                                 <i class="fa fa-lock fa-1x text-light"></i>
                             </span>
-                            <input type="tel" class="form-control" id="password" name="password" value="<?php echo ($oldFormData['password'] ?? ''); ?>" placeholder="" maxlength="9">
+                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="">
                         </div>
                     </div>
                     <!-- Error Message -->
