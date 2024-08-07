@@ -67,13 +67,23 @@ class UserService
             ];
 
         $this->db->query($query, $params);
+
+        // after create the new user, regenerate the PHP Session id cookie
+        session_regenerate_id();
+
+        // Save user's info in a SESSION, will be the last Id inserted in the users Table    
+        $_SESSION['user'] = $this->db->lastId();
+
+        // Log to save the registered user
+        // $this->log->accessLog('register');
     }
 
     /**
-     * Create a new user in the system
+     * Login in the system
      * 
-     * * 1 - Insert the new user in the DB. Hash the password using PASSWORD_BCRYPT. 
-     * * 2 - Create a $_SESSION variable with the user info
+     * * 1 - Search if the email exists in the users Table. 
+     * * 2 - If exists compare the passwords
+     * * 3 - In case that log fails show an ambiguous message
      * * 3 - Save the new registered user in the log file
      * @param array $userData Information received from the login form page
      */

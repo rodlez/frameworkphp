@@ -83,4 +83,12 @@ class Database
     {
         return $this->stmt->fetch();
     }
+
+    /**
+     * Method to get the last inserted id
+     */
+    public function lastId()
+    {
+        return $this->connection->lastInsertId();
+    }
 }
